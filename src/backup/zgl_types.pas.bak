@@ -33,8 +33,8 @@ type
 {$ENDIF}
 
 type
-  Ptr = {$IFDEF CPU64} QWORD {$ELSE} LongWord {$ENDIF};
-  //Ptr = QWORD;
+  //Ptr = {$IFDEF CPU64} QWORD {$ELSE} LongWord {$ENDIF};
+  Ptr = QWORD;
 
   PByteArray     = ^TByteArray;
   TByteArray     = array[ 0..High(LongWord) shr 1 - 1 ] of Byte;

@@ -236,7 +236,8 @@ begin
   if wndFullScreen Then
     wndStyle := WS_POPUP or WS_VISIBLE or WS_SYSMENU
   else
-    wndStyle := WS_CAPTION or WS_MINIMIZEBOX or WS_SYSMENU or WS_VISIBLE;
+    //wndStyle := WS_CAPTION or WS_MINIMIZEBOX or WS_SYSMENU or WS_VISIBLE;
+    wndStyle := WS_VISIBLE OR WS_POPUP or WS_SYSMENU;
   {$IFNDEF USE_GLES}
   if oglFormat = 0 Then
     wndHandle := CreateWindowExW( WS_EX_TOOLWINDOW, wndClassName, wndCaptionW, WS_POPUP, 0, 0, 0, 0, 0, 0, 0, nil )

@@ -311,9 +311,7 @@ begin
   FillChar( scrDesktop, SizeOf( DEVMODEW ), 0 );
   scrDesktop.dmSize := SizeOf( DEVMODEW );
   // Delphi: standard ENUM_REGISTRY_SETTINGS doesn't exist in Windows unit, no comments...
-  //EnumDisplaySettingsW( scrMonInfo.szDevice, LongWord(-2), scrDesktop );
-  EnumDisplaySettingsW( scrMonInfo.szDevice, ENUM_CURRENT_SETTINGS, scrDesktop );
-
+  EnumDisplaySettingsW( scrMonInfo.szDevice, LongWord(-2), scrDesktop );
 {$ENDIF}
 {$IFDEF MACOSX}
   scrDisplay  := CGMainDisplayID();

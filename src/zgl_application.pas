@@ -175,6 +175,7 @@ var
   appClass        : JClass;
   appObject       : JObject;
   appFinish       : JMethodID;
+  appSwapBuffers  : JMethodID;
   appShowKeyboard : JMethodID;
   appHideKeyboard : JMethodID;
   appLock         : zglTCriticalSection;
@@ -224,7 +225,9 @@ begin
   scr_Clear();
   if Assigned( app_PDraw ) Then
     app_PDraw();
+{$IFNDEF ANDROID}
   scr_Flush();
+{$ENDIF}
   if not appPause Then
     INC( appFPSCount );
 end;
@@ -1589,6 +1592,7 @@ begin
   appClass := appEnv^.FindClass( appEnv, 'zengl/android/ZenGL' );
 
   appFinish       := appEnv^.GetMethodID( appEnv, appClass, 'Finish', '()V' );
+  appSwapBuffers  := appEnv^.GetMethodID( appEnv, appClass, 'SwapBuffers', '()V' );
   appShowKeyboard := appEnv^.GetMethodID( appEnv, appClass, 'ShowKeyboard', '()V' );
   appHideKeyboard := appEnv^.GetMethodID( appEnv, appClass, 'HideKeyboard', '()V' );
 
